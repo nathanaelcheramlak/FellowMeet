@@ -83,7 +83,7 @@ const UserCard = ({ user }) => {
 
         {user.bio && (
           <p>
-            <FaUserCircle /> "{user.bio}"
+            <FaUserCircle /> &quot;{user.bio}&quot;
           </p>
         )}
         {user.dateOfBirth && (
