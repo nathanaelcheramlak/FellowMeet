@@ -80,7 +80,7 @@ const Login = () => {
         </div>
 
         <p className="text-center text-gray-600 mt-4">
-          Don't have an account?{' '}
+          Don't have an account?&nbsp;
           <span
             className="text-blue-600 cursor-pointer hover:underline"
             onClick={() => router.push('/signup')}
