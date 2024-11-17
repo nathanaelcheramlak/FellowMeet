@@ -35,7 +35,7 @@ const App = () => {
     const authUser = async () => {
       try {
         const response = await fetch(
-          'https://fellowmeet.onrender.com//api/auth/verify',
+          'https://fellowmeet.onrender.com/api/auth/verify',
           {
             credentials: 'include',
           },
@@ -56,7 +56,7 @@ const App = () => {
     const fetchUsers = async () => {
       try {
         const response = await fetch(
-          'https://fellowmeet.onrender.com//api/user',
+          'https://fellowmeet.onrender.com/api/user',
           {
             credentials: 'include',
           },
@@ -114,7 +114,7 @@ const App = () => {
   const handleLogout = async () => {
     try {
       const response = await fetch(
-        'https://fellowmeet.onrender.com//api/auth/logout',
+        'https://fellowmeet.onrender.com/api/auth/logout',
         {
           method: 'DELETE',
           credentials: 'include',
