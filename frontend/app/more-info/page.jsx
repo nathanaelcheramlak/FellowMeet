@@ -193,9 +193,10 @@ const StepThree = ({
       const newformData = new FormData();
       newformData.append('file', file);
       console.log(newformData);
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL;
       try {
         const response = await axios.post(
-          'http://localhost:5000/api/user/upload-img',
+          `${apiUrl}/user/upload-img`,
           newformData,
           {
             headers: { 'Content-Type': 'multipart/form-data' },
@@ -315,8 +316,9 @@ const MultiStepForm = () => {
   const submitForm = async (e) => {
     e.preventDefault();
     setLoading(true);
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
     try {
-      const response = await fetch('http://localhost:5000/api/user/create', {
+      const response = await fetch(`${apiUrl}/user/create`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

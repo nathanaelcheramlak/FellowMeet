@@ -33,13 +33,12 @@ const App = () => {
   // Fetch users when the component mounts
   useEffect(() => {
     const authUser = async () => {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+      console.log('API URL: ', apiUrl);
       try {
-        const response = await fetch(
-          'https://fellowmeet.onrender.com/api/auth/verify',
-          {
-            credentials: 'include',
-          },
-        );
+        const response = await fetch(`${apiUrl}/auth/verify`, {
+          credentials: 'include',
+        });
         if (response.ok) {
           const data = await response.json();
           console.log('Current User: ', data.user);
@@ -54,13 +53,11 @@ const App = () => {
     };
 
     const fetchUsers = async () => {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL;
       try {
-        const response = await fetch(
-          'https://fellowmeet.onrender.com/api/user',
-          {
-            credentials: 'include',
-          },
-        );
+        const response = await fetch(`${apiUrl}/user`, {
+          credentials: 'include',
+        });
         if (response.ok) {
           const data = await response.json();
           setUsers(data.filter((user) => user.team != null));
@@ -112,14 +109,12 @@ const App = () => {
   };
 
   const handleLogout = async () => {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
     try {
-      const response = await fetch(
-        'https://fellowmeet.onrender.com/api/auth/logout',
-        {
-          method: 'DELETE',
-          credentials: 'include',
-        },
-      );
+      const response = await fetch(`${apiUrl}/auth/logout`, {
+        method: 'DELETE',
+        credentials: 'include',
+      });
 
       if (!response.ok) {
         console.log('Error Logging out.');

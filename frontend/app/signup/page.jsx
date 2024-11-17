@@ -26,9 +26,10 @@ const Signup = () => {
 
   const handleSubmit = async () => {
     if (!validateForm()) return;
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
     try {
       setLoading(true);
-      const response = await fetch('http://localhost:5000/api/auth/signup', {
+      const response = await fetch(`${apiUrl}/auth/signup`, {
         headers: {
           'Content-Type': 'application/json',
         },

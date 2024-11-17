@@ -33,13 +33,11 @@ const EditProfile = () => {
 
   useEffect(() => {
     const fetchUserData = async () => {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL;
       try {
-        const authResponse = await fetch(
-          'http://localhost:5000/api/auth/verify',
-          {
-            credentials: 'include',
-          },
-        );
+        const authResponse = await fetch(`${apiUrl}/auth/verify`, {
+          credentials: 'include',
+        });
 
         if (!authResponse.ok) {
           throw new Error('Authentication failed');
@@ -48,12 +46,9 @@ const EditProfile = () => {
         const { user: authUser } = await authResponse.json();
         const { _id: userId } = authUser;
 
-        const userResponse = await fetch(
-          `http://localhost:5000/api/user/${userId}`,
-          {
-            credentials: 'include',
-          },
-        );
+        const userResponse = await fetch(`${apiUrl}/user/${userId}`, {
+          credentials: 'include',
+        });
 
         if (!userResponse.ok) {
           throw new Error('Failed to fetch user data');
@@ -73,13 +68,14 @@ const EditProfile = () => {
 
   const handleImageChange = async (e) => {
     const file = e.target.files[0];
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
     if (file) {
       setImageLoading(true);
       const formData = new FormData();
       formData.append('file', file);
       try {
         const response = await axios.post(
-          'http://localhost:5000/api/user/upload-img',
+          `${apiUrl}/user/upload-img`,
           formData,
           {
             headers: { 'Content-Type': 'multipart/form-data' },
@@ -120,8 +116,9 @@ const EditProfile = () => {
     e.preventDefault();
     if (!validateForm()) return;
     setLoading(true);
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
     try {
-      const response = await fetch('http://localhost:5000/api/user/edit', {
+      const response = await fetch(`${apiUrl}/user/edit`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
