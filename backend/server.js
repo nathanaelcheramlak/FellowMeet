@@ -14,10 +14,10 @@ const isProduction = process.env.NODE_ENV === 'production';
 app.use(
   cors({
     origin: isProduction
-      ? 'https://your-production-url.com' // Replace with your production frontend URL
-      : 'http://localhost:3000', // Local development URL
-    credentials: true, // Enable cookies to be included in requests
-    exposedHeaders: ['set-cookie'], // Expose specific headers to the client
+      ? 'https://fellow-meet4k.vercel.app/'
+      : 'http://localhost:3000',
+    credentials: true,
+    exposedHeaders: ['set-cookie'],
   }),
 );
 app.use(express.json());
