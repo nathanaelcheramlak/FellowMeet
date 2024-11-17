@@ -34,9 +34,12 @@ const App = () => {
   useEffect(() => {
     const authUser = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/auth/verify', {
-          credentials: 'include',
-        });
+        const response = await fetch(
+          'https://fellowmeet.onrender.com//api/auth/verify',
+          {
+            credentials: 'include',
+          },
+        );
         if (response.ok) {
           const data = await response.json();
           console.log('Current User: ', data.user);
@@ -52,9 +55,12 @@ const App = () => {
 
     const fetchUsers = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/user', {
-          credentials: 'include',
-        });
+        const response = await fetch(
+          'https://fellowmeet.onrender.com//api/user',
+          {
+            credentials: 'include',
+          },
+        );
         if (response.ok) {
           const data = await response.json();
           setUsers(data.filter((user) => user.team != null));
@@ -107,10 +113,13 @@ const App = () => {
 
   const handleLogout = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/auth/logout', {
-        method: 'DELETE',
-        credentials: 'include',
-      });
+      const response = await fetch(
+        'https://fellowmeet.onrender.com//api/auth/logout',
+        {
+          method: 'DELETE',
+          credentials: 'include',
+        },
+      );
 
       if (!response.ok) {
         console.log('Error Logging out.');
