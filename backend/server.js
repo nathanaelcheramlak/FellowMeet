@@ -7,14 +7,17 @@ import userRoutes from './routes/userRoutes.js';
 import authRoutes from './routes/authRoutes.js';
 
 const app = express();
-
 const PORT = process.env.PORT;
+
+const isProduction = process.env.NODE_ENV === 'production';
 
 app.use(
   cors({
-    origin: 'http://localhost:3000', // Allow requests only from this origin
+    origin: isProduction
+      ? 'https://your-production-url.com' // Replace with your production frontend URL
+      : 'http://localhost:3000', // Local development URL
     credentials: true, // Enable cookies to be included in requests
-    exposedHeaders: ['set-cookie'],
+    exposedHeaders: ['set-cookie'], // Expose specific headers to the client
   }),
 );
 app.use(express.json());
