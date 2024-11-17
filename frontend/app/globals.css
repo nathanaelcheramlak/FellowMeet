@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  /* background-color: midnightblue; */
+  /* background-image: url(/assets/grid-line.png); */
+  /* background-image: radial-gradient(
+    circle at 50% 50%,
+    rgba(28, 218, 238, 1) -50%,
+    transparent 60%
+  ); */
+  color: black;
+  background-color: white;
+  transition: 0.5s ease;
+}
+input {
+  background-color: white;
+}
