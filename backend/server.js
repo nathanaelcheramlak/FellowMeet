@@ -14,7 +14,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 app.use(
   cors({
     origin: isProduction
-      ? 'https://fellow-meet4k.vercel.app/'
+      ? 'https://fellow-meet4k.vercel.app'
       : 'http://localhost:3000',
     credentials: true,
     exposedHeaders: ['set-cookie'],
