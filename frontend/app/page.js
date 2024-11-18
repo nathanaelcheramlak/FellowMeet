@@ -14,7 +14,7 @@ const App = () => {
   const [users, setUsers] = useState([]);
   const [filters, setFilters] = useState({ department: '', team: '' });
   const [filteredUsers, setFilteredUsers] = useState(null);
-  const [toggleFilter, setToggleFilters] = useState(true);
+  const [toggleFilter, setToggleFilters] = useState(false);
   const [loading, setLoading] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
