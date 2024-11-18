@@ -30,11 +30,6 @@
   cursor: pointer;
   transition: transform 0.3s ease;
 }
-.icon:hover {
-  background-color: rgb(255, 255, 104);
-  color: white;
-  border: 0.75px solid black;
-}
 
 .card .image-wrapper {
   position: relative;
