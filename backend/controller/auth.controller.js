@@ -78,7 +78,7 @@ export const logout = (req, res) => {
   try {
     res.cookie('jwt', '', {
       maxAge: 0,
-      sameSite: 'strict',
+      sameSite: 'none',
       httpOnly: true,
       secure: true,
     });
