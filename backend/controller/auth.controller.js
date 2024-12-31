@@ -80,6 +80,7 @@ export const logout = (req, res) => {
       maxAge: 0,
       sameSite: 'strict',
       httpOnly: true,
+      secure: true,
     });
     res.status(200).json({ message: 'Logged out successfully' });
   } catch (error) {
