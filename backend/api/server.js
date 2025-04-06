@@ -32,9 +32,9 @@ app.use(
 );
 
 // Middleware
-app.use(morgan('dev'));
 app.use(helmet());
 app.use(express.json());
+app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 

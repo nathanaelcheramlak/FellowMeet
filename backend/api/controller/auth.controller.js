@@ -5,10 +5,11 @@ import bcrypt from 'bcryptjs';
 import User from '../models/user.model.js';
 import sendEmail from '../utils/sendEmail.js';
 import generateTokenAndSetCookie from '../utils/generateToken.js';
+import clearToken from '../utils/clearToken.js';
 
 export const register = async (req, res) => {
   try {
-    const { fullname, email, password, role } = req.body;
+    const { fullname, email, phone, password, role } = req.body;
 
     const user = await User.findOne({ $or: [{email}, {phone}] });
     if (user) {
@@ -21,6 +22,7 @@ export const register = async (req, res) => {
     const newUser = new User({
       fullname,
       email,
+      phone,
       password: hashedPassword,
       role: role || 'user',
     });
@@ -40,7 +42,7 @@ export const register = async (req, res) => {
       message: 'User registered successfully',
       data: {
         _id: newUser._id,
-        fullName: newUser.fullname,
+        fullname: newUser.fullname,
         email: newUser.email,
       }
     });
@@ -56,18 +58,18 @@ export const login = async (req, res) => {
 
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(400).json({ error: 'No User found. Try signing in' });
+      return res.status(400).json({ success: false, message: 'No user found with this email. register now' });
     }
 
     const ispwdCorrect = await bcrypt.compare(password, user.password);
     if (!ispwdCorrect) {
-      return res.status(400).json({ error: 'Invalid Credentials.' });
+      return res.status(400).json({ success: false, message: 'Invalid credentials' });
     }
 
     generateTokenAndSetCookie(user._id, res);
     res.status(200).json({
       _id: user._id,
-      fullName: user.fullName,
+      fullname: user.fullname,
       email: user.email,
     });
   } catch (error) {
@@ -78,12 +80,7 @@ export const login = async (req, res) => {
 
 export const logout = (req, res) => {
   try {
-    res.cookie('jwt', '', {
-      maxAge: 0,
-      sameSite: 'none',
-      httpOnly: true,
-      secure: true,
-    });
+    clearToken(res);
     res.status(200).json({ message: 'Logged out successfully' });
   } catch (error) {
     console.log('Error in logout controller: ', error);
@@ -93,8 +90,9 @@ export const logout = (req, res) => {
 
 export const me = async (req, res) => {
   try {
-    const userId = req.user.id;
-    const user = await User.findById(userId).select('-password');
+    const userId = req.user._id;
+    console.log(req.user);
+    const user = await User.findById(userId).select('-password -resetPasswordToken -resetPasswordExpires -emailVerificationToken -emailVerified');
     if (!user) {
       return res.status(404).json({ success: false, message: 'User not found' });
     }

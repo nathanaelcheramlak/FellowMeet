@@ -1,7 +1,11 @@
 // It should be used with auth middleware
-const roleMiddleware = async (role, req, res, next) => {
+const roleMiddleware = (role) => async (req, res, next) => {
     try {
         const user = req.user;
+        if (!user) {
+            return res.status(401).json({ success: false, message: 'Unauthorized!' });
+        }
+
         if (user.role !== role && user.role !== 'admin') {
             return res.status(403).json({ success: false, message: 'Access denied' });
         }

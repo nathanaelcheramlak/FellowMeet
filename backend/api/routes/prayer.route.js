@@ -1,6 +1,6 @@
 import express from 'express';
-import { createPrayer, editPrayer, deletePrayer, getPrayers, getPrayerById, createPrayer, likePrayer, deleteLikePrayer } from '../controller/prayer.controller.js';
-import authMiddleware from '../middleware/auth.middleware';
+import { createPrayer, editPrayer, deletePrayer, getPrayers, getPrayerById, likePrayer, deleteLikePrayer } from '../controller/prayer.controller.js';
+import authMiddleware from '../middleware/auth.middleware.js';
 
 const router = express.Router();
 
