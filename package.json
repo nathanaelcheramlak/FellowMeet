@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "backend/api/server.js",
   "scripts": {
-    "server": "nodemon backend/api/server.js"
+    "server": "nodemon backend/api/server.js",
+    "start": "node backend/api/server.js"
   },
   "type": "module",
   "author": "",
@@ -18,7 +19,6 @@
     "express": "^5.1.0",
     "helmet": "^8.1.0",
     "joi": "^17.13.3",
-    "joi-objectid": "^4.0.2",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.13.2",
     "morgan": "^1.10.0",

@@ -32,9 +32,6 @@ importers:
       joi:
         specifier: ^17.13.3
         version: 17.13.3
-      joi-objectid:
-        specifier: ^4.0.2
-        version: 4.0.2
       jsonwebtoken:
         specifier: ^9.0.2
         version: 9.0.2
@@ -348,9 +345,6 @@ packages:
 
   isarray@1.0.0:
     resolution: {integrity: sha512-VLghIWNM6ELQzo7zwmcg0NmTVyWKYjvIeM83yjp0wRDTmUnrM678fQbcKBo6n2CJEF0szoG//ytg+TKla89ALQ==}
-
-  joi-objectid@4.0.2:
-    resolution: {integrity: sha512-OjYM+wK/JGo2bSb9ADEyzxxROJPZYtrqIwBbywpJ2a98oKlbLtWTKvpzmrnXzou69Ey9EsjHsFvZYzpjeCdKuA==}
 
   joi@17.13.3:
     resolution: {integrity: sha512-otDA4ldcIx+ZXsKHWmp0YizCweVRZG96J10b0FevjfuncLO1oX59THoAmHkNubYJ+9gWsYsp5k8v4ib6oDv1fA==}
@@ -1024,8 +1018,6 @@ snapshots:
   is-promise@4.0.0: {}
 
   isarray@1.0.0: {}
-
-  joi-objectid@4.0.2: {}
 
   joi@17.13.3:
     dependencies:
